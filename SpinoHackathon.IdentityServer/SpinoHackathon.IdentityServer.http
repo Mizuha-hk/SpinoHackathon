@@ -1,0 +1,6 @@
+@SpinoHackathon.IdentityServer_HostAddress = http://localhost:5214
+
+GET {{SpinoHackathon.IdentityServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

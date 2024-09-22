@@ -1,0 +1,6 @@
+@SpinoHackathon.PostServer_HostAddress = http://localhost:5132
+
+GET {{SpinoHackathon.PostServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
