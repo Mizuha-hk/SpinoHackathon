@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -11,6 +11,14 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SpinoHackathon.Client\SpinoHackathon.Client.csproj" />
+    <ProjectReference Include="..\..\SpinoHackathon.IdentityServer\SpinoHackathon.IdentityServer.csproj" />
+    <ProjectReference Include="..\..\SpinoHackathon.NotificationServer\SpinoHackathon.NotificationServer.csproj" />
+    <ProjectReference Include="..\..\SpinoHackathon.PostServer\SpinoHackathon.PostServer.csproj" />
+    <ProjectReference Include="..\..\SpinoHackathon.RealtimeServer\SpinoHackathon.RealtimeServer.csproj" />
   </ItemGroup>
 
 </Project>
