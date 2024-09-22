@@ -1,0 +1,6 @@
+@SpinoHackathon.NotificationServer_HostAddress = http://localhost:5103
+
+GET {{SpinoHackathon.NotificationServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
