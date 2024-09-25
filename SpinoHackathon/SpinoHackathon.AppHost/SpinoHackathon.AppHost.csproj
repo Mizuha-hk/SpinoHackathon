@@ -10,15 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.0" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.CosmosDB" Version="8.2.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SpinoHackathon.Client\SpinoHackathon.Client.csproj" />
     <ProjectReference Include="..\..\SpinoHackathon.IdentityServer\SpinoHackathon.IdentityServer.csproj" />
     <ProjectReference Include="..\..\SpinoHackathon.NotificationServer\SpinoHackathon.NotificationServer.csproj" />
     <ProjectReference Include="..\..\SpinoHackathon.PostServer\SpinoHackathon.PostServer.csproj" />
+    <ProjectReference Include="..\..\SpinoHackathon.ProfileServer\SpinoHackathon.ProfileServer.csproj" />
     <ProjectReference Include="..\..\SpinoHackathon.RealtimeServer\SpinoHackathon.RealtimeServer.csproj" />
+    <ProjectReference Include="..\..\SpinoHackathon.WebApp\SpinoHackathon.WebApp.csproj" />
   </ItemGroup>
 
 </Project>

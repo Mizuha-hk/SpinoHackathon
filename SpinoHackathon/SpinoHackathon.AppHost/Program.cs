@@ -1,13 +1,35 @@
+using Microsoft.Extensions.Hosting;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.SpinoHackathon_RealtimeServer>("spinohackathon-realtimeserver");
+var cosmos = builder.AddAzureCosmosDB("spinohackathon-db");
 
-builder.AddProject<Projects.SpinoHackathon_IdentityServer>("spinohackathon-identityserver");
+var cosmosDb = cosmos.AddDatabase("cosmosdb");
 
-builder.AddProject<Projects.SpinoHackathon_PostServer>("spinohackathon-postserver");
+if (builder.Environment.IsDevelopment())
+{
+    cosmosDb
+        .WithHttpsEndpoint(8081,8081, "emulator-port")
+        .RunAsEmulator();
+}
 
-builder.AddProject<Projects.SpinoHackathon_NotificationServer>("spinohackathon-notificationserver");
+// Services
+builder.AddProject<Projects.SpinoHackathon_RealtimeServer>("realtimeserver");
 
-builder.AddProject<Projects.SpinoHackathon_Client>("spinohackathon-client");
+var identityServer = builder.AddProject<Projects.SpinoHackathon_IdentityServer>("identityserver")
+    .WithReference(cosmosDb);
+
+var profileServer = builder.AddProject<Projects.SpinoHackathon_ProfileServer>("profileserver")
+    .WithReference(identityServer)
+    .WithReference(cosmosDb);
+
+builder.AddProject<Projects.SpinoHackathon_PostServer>("postserver")
+    .WithReference(identityServer)
+    .WithReference(cosmosDb);
+
+builder.AddProject<Projects.SpinoHackathon_NotificationServer>("notificationserver");
+
+var webApp = builder.AddProject<Projects.SpinoHackathon_WebApp>("webapp")
+    .WithReference(profileServer);
 
 builder.Build().Run();
